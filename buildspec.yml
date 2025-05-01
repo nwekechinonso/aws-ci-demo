@@ -9,12 +9,13 @@ phases:
       - npm install
       - npm ci
       - npx cypress install
-      - echo Installing Chrome...
-      - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-      - sudo apt install -y ./google-chrome-stable_current_amd64.deb
-
+  pre_build:
+    commands:
+      - echo Starting the frontend app...
+      - npm run start &                  
+      - npx wait-on http://localhost:3000 
   build:
     commands:
-      - echo Running tests...
-      - google-chrome --version
+      - nohup npm start & 
+      - sleep 15
       - npx cypress run
