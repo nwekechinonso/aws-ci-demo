@@ -15,4 +15,4 @@ phases:
     commands:
       - echo Running tests...
       - google-chrome --version
-      - npm test
+      - npx cypress run
