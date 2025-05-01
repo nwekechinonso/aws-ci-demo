@@ -7,7 +7,12 @@ phases:
     commands:
       - echo Installing dependencies...
       - npm install
+      - echo Installing Chrome...
+      - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+      - sudo apt install -y ./google-chrome-stable_current_amd64.deb
+
   build:
     commands:
       - echo Running tests...
+      - google-chrome --version
       - npm test
